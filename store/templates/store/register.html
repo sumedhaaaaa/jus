@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<style>
+	html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, rgb(255, 255, 255) 50%, #fff176 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: .5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+}
+
+.bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+
+.bg3 {
+    animation-duration: 5s;
+}
+
+.content {
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: .25em;
+    box-shadow: 0 0 .25em rgba(0, 0, 0, .25);
+    box-sizing: border-box;
+    left: 50%;
+    padding: 10vmin;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    font-family: monospace;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 15px;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+</style>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+
+<div class="container">
+<hr>
+
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+<div class="card">
+<header class="card-header">
+	<a href="{% url 'login' %}" class="float-right btn btn-outline-primary mt-1">Log in</a>
+	<h4 class="card-title mt-2">Sign up</h4>
+</header>
+<article class="card-body">
+<form method="POST" action="">
+	{% csrf_token %}
+	<div class="form-group">
+		<label>Create Username</label>
+		{{form.username}}
+	</div> <!-- form-group end.// -->
+	<div class="form-row">
+		<div class="col form-group">
+			<label>First name </label>
+		{{form.first_name}}
+		</div>
+		<!-- form-group end.// -->
+		<div class="col form-group">
+			<label>Last name</label>
+		{{form.last_name}}
+		</div>
+		<!-- form-group end.// -->
+	</div>
+	<!-- form-row end.// -->
+	<div class="form-group">
+		<label>Email address</label>
+		{{form.email}}
+		<small class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+	</div>
+	<!-- form-group end.// -->
+	</div>
+	<!-- form-row.// -->
+	<div class="form-group">
+		<label>Create password</label>
+		{{form.password1}}
+	</div> <!-- form-group end.// -->
+	<div class="form-group">
+		<label>Re-enter password</label>
+		{{form.password2}}
+	</div> <!-- form-group end.// -->
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+    </div> <!-- form-group// -->
+    <small class="text-muted">By clicking the 'Register' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>                                          
+</form>
+</article> <!-- card-body end .// -->
+{{form.errors}}
+<div class="border-top card-body text-center">Have an account?<a href="{% url 'login' %}">&nbsp;Log In</></div>
+</div> <!-- card.// -->
+</div> <!-- col.//-->
+
+</div> <!-- row.//-->
+
+</div>
+<!--container end.//-->
+<script>
+var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='username..';
+		form_fields[2].placeholder='first name..';
+        form_fields[3].placeholder='last name..';
+        form_fields[4].placeholder='email..';
+		form_fields[5].placeholder='enter password...';
+		form_fields[6].placeholder='re-enter Password...';
+	for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+	}
+</script>
+
+<br><br>
+</html>
