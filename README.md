@@ -18,5 +18,5 @@ Card Number : 4111 1111 1111 1111 Expiry : 11/23 CVV : 111
 3. database used is Sqlite which is provided by default by Django.
 
 # Developers
-Developed by Souraja Dasray and Samim Hossain Mondal 3rd year B.Tech IT student @ KIIT University.
+Developed by Sumedha Ghosh Btech ECE @ Silicon Institute Of Technology.
 Happy Coding! :)
